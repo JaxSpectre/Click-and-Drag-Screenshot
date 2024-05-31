@@ -16,33 +16,20 @@ def main():
     my_screenshot = pyautogui.screenshot()
 
     print("mouse released")
+    print("height", my_screenshot.height)
+    print("width", my_screenshot.width)
+    
+    im_cropped = my_screenshot.crop((detect_click.mouse_pos_p[0], 
+                          detect_click.mouse_pos_p[1], 
+                          detect_click.mouse_pos_r[0], 
+                          detect_click.mouse_pos_r[1]))
 
     
-    im_cropped = my_screenshot.crop((mouse_click.mouse_pos_p[0], 
-                          mouse_click.mouse_pos_p[1], 
-                          mouse_click.mouse_pos_r[0], 
-                          mouse_click.mouse_pos_r[1]))
-
-    my_screenshot.show()
+    im_crop2 = my_screenshot.crop((0,0,100,100))
+    print("mouse",detect_click.mouse_pos_p[0])
+    im_crop2.show()
     #im = my_screenshot
     
-
-
-    # Size of the image in pixels (size of original image)
-    #width, height = im.size
-    '''
-    # Setting the points for cropped image
-    left = 5
-    top = height / 4
-    right = 164
-    bottom = 3 * height / 4
-    '''
-    # Cropped image of above dimension
-    # (It will not change original image)
-    #im1 = im.crop((left, top, right, bottom))
-    
-    # Shows the image in image viewer
-    #im1.show()
 
 
 
