@@ -7,22 +7,28 @@ import detect_click
 
 
 def main():
+
+    mouse_click = detect_click.Mouse_Click
+
     print("Click mouse:")
-    detect_click.Mouse_Click.listen()
+    mouse_click.listen()
 
     my_screenshot = pyautogui.screenshot()
 
     print("mouse released")
 
-    #im = pyautogui.screenshot(region=(click_p.x,click_p.y, click_r.x, click_r.y))
-    #im.show()
+    
+    im_cropped = my_screenshot.crop((mouse_click.mouse_pos_p[0], 
+                          mouse_click.mouse_pos_p[1], 
+                          mouse_click.mouse_pos_r[0], 
+                          mouse_click.mouse_pos_r[1]))
+
+    my_screenshot.show()
     #im = my_screenshot
     
-    #asdasd
 
 
     # Size of the image in pixels (size of original image)
-    # (This is not mandatory)
     #width, height = im.size
     '''
     # Setting the points for cropped image
