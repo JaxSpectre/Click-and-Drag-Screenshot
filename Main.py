@@ -18,7 +18,7 @@ def main():
     #im.show()
     #im = my_screenshot
     
-
+    #asdasd
 
 
     # Size of the image in pixels (size of original image)
