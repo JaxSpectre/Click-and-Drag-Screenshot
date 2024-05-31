@@ -1,14 +1,14 @@
 import pyautogui
 from PIL import Image
 from pynput.mouse import Listener, Button
-import d1
+import detect_click
 
 
 
 
 def main():
     print("Click mouse:")
-    d1.Mouse_Click.listen()
+    detect_click.Mouse_Click.listen()
 
     my_screenshot = pyautogui.screenshot()
 
