@@ -7,23 +7,12 @@ import d1
 
 
 def main():
-    print("asd")
-    d1.listen()
+    print("Click mouse:")
+    d1.Mouse_Click.listen()
 
-    #my_screenshot = pyautogui.screenshot()
-    '''
-    while True:
-        d1.on_click()
-        print(d1.mouse_released)
-        if d1.mouse_released:
-            click_p = d1.mouse_pos_p
-            click_r = d1.mouse_pos_p
-            print(click_p)
-            print(click_r)
-            break
+    my_screenshot = pyautogui.screenshot()
 
-    '''
-    print("asdsad")
+    print("mouse released")
 
     #im = pyautogui.screenshot(region=(click_p.x,click_p.y, click_r.x, click_r.y))
     #im.show()
@@ -48,9 +37,6 @@ def main():
     
     # Shows the image in image viewer
     #im1.show()
-
-
-    print("asd")
 
 
 

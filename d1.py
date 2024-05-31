@@ -15,23 +15,25 @@ mouse_pos_r = (0,0)
 
 mouse_released = False
 
-def on_click(x, y, button, pressed):
-    if pressed:
-        #get_mouse_position()
-        x, y = pyautogui.position()
-        #print(f"Mouse position: ({x}, {y})")
-        mouse_pos_p = (x,y)
-        print(mouse_pos_p)
-    else:
-        x, y = pyautogui.position()
-        print(f"Mouse position: ({x}, {y})")
-        mouse_pos_r = (x,y)
-        mouse_released = True
-        Listener.stop()
+class Mouse_Click:
+    def on_click(x, y, button, pressed):
+        if pressed:
+            #get_mouse_position()
+            x, y = pyautogui.position()
+            #print(f"Mouse position: ({x}, {y})")
+            mouse_pos_p = (x,y)
+            print(mouse_pos_p)
+        else:
+            x, y = pyautogui.position()
+            print(f"Mouse position: ({x}, {y})")
+            mouse_pos_r = (x,y)
+            mouse_released = True
+            listener.stop()
 
 
-def listen():
-    # Create a listener for mouse events
-    with Listener(on_click=on_click) as listener:
-        listener.join()
-    
+    def listen():
+        # Create a listener for mouse events
+        global listener
+        with Listener(on_click=Mouse_Click.on_click) as listener:
+            listener.join()
+        
