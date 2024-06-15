@@ -2,43 +2,11 @@ import pyautogui
 from PIL import Image
 from pynput.mouse import Listener, Button
 import detect_click
-
-
-
-class abc:
-    mouse_pos_p = (0,0)
-    mouse_pos_r = (0,0)
-
-    def on_click(x, y, button, pressed):
-        if pressed:
-            #get_mouse_position()
-            x, y = pyautogui.position()
-            print(f"Mouse position clicked: ({x}, {y})")
-
-            abc.mouse_pos_p = (x,y)
-
-        else:
-            x, y = pyautogui.position()
-            print(f"Mouse position released: ({x}, {y})")
-
-            abc.mouse_pos_r = (x,y)
-
-            listener.stop()
-        #print("r",mouse_pos_r)
-        #print("p",mouse_pos_p)
-        print("end")
-
-
-    def listen():
-        # Create a listener for mouse events
-        global listener
-
-        with Listener(on_click=abc.on_click) as listener:
-            listener.join()
-        #return mouse_pos_p
+from pytesseract import pytesseract
 
 def main():
-
+    path_to_tesseract = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+    pytesseract.tesseract_cmd = path_to_tesseract
     screen_size = pyautogui.size()
     my_screenshot = pyautogui.screenshot()
     mouse_pos_p = (0,0)
@@ -51,6 +19,8 @@ def main():
     #print(mouse_click.listen())
     
     my_screenshot = pyautogui.screenshot()
+
+
 
     print("mouse released")
     mouse_pos_r = detect_click.Mouse_Click.mouse_pos_r
@@ -66,12 +36,20 @@ def main():
                           mouse_pos_r[0], 
                           mouse_pos_r[1]
                           ))
-    
-    
-    im_crop2 = my_screenshot.crop((0,0,100,100))
+
+    #bw
+    thresh = 200
+    fn = lambda x: 255 if x > thresh else 0
+    im_cropped_bw = im_cropped.convert('L').point(fn, mode='1')
 
     im_cropped.show()
-    #im = my_screenshot
+    im_cropped_bw.show()
+
+    text = pytesseract.image_to_string(im_cropped_bw)
+
+    print("*****************************************")
+    print(text[:-1])
+
     
 
 
