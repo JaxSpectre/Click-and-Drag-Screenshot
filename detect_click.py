@@ -15,14 +15,14 @@ class Mouse_Click:
             x, y = pyautogui.position()
             print(f"Mouse position clicked: ({x}, {y})")
 
-            mouse_pos_p = (x,y)
+            Mouse_Click.mouse_pos_p = (x,y)
             Main.mouse_pos_p = (x,y)
 
         else:
             x, y = pyautogui.position()
             print(f"Mouse position released: ({x}, {y})")
 
-            mouse_pos_r = (x,y)
+            Mouse_Click.mouse_pos_r = (x,y)
             Main.mouse_pos_r = (x,y)
 
             listener.stop()
